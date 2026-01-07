@@ -1,5 +1,5 @@
 icons_launcher:
-  image_path: "assets/applogo.png"
+  image_path: "assets/toai_attend_logo.png"
   platforms:
     android:
       enable: true

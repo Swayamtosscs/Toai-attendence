@@ -1,0 +1,79 @@
+मुझे Employee Attendance App के लिए Location Save API बनाना है। 
+
+REQUIREMENTS:
+
+1. API Endpoint: POST /api/work-locations
+   - URL: http://103.14.120.163:8092/api/work-locations
+   - Method: POST
+   - Authentication: Bearer Token required (same as check-in/check-out APIs)
+
+2. Request Body:
+   {
+     "name": "Main Office",
+     "latitude": 22.3072,
+     "longitude": 73.1812,
+     "radius": 100.0
+   }
+
+3. Validation Required:
+   - name: required, string
+   - latitude: required, number, range: -90 to 90
+   - longitude: required, number, range: -180 to 180
+   - radius: required, number, range: 1 to 10000 meters
+
+4. Success Response (200/201):
+   {
+     "success": true,
+     "message": "Location saved successfully",
+     "data": {
+       "id": "loc_123456789",
+       "name": "Main Office",
+       "latitude": 22.3072,
+       "longitude": 73.1812,
+       "radius": 100.0,
+       "createdAt": "2024-01-15T10:30:00Z",
+       "updatedAt": "2024-01-15T10:30:00Z"
+     }
+   }
+
+5. Error Response (400):
+   {
+     "success": false,
+     "message": "Invalid location data",
+     "error": "Latitude must be between -90 and 90"
+   }
+
+6. Database Table: work_locations
+   Fields:
+   - id (VARCHAR, PRIMARY KEY)
+   - name (VARCHAR, NOT NULL)
+   - latitude (DECIMAL(10,8), NOT NULL)
+   - longitude (DECIMAL(11,8), NOT NULL)
+   - radius (DECIMAL(10,2), NOT NULL)
+   - created_by (VARCHAR, optional - user ID)
+   - created_at (TIMESTAMP)
+   - updated_at (TIMESTAMP)
+   - is_active (BOOLEAN, default: true)
+
+7. Additional Endpoints Needed:
+   - GET /api/work-locations (get all locations) - Already exists but verify format
+   - PUT /api/work-locations/:id (update location)
+   - DELETE /api/work-locations/:id (soft delete - set is_active = false)
+
+8. Authentication: Same as check-in/check-out APIs
+   - Header: Authorization: Bearer <token>
+   - Cookie: attendance_token=<token> (optional)
+
+9. Response Format: Same structure as check-in/check-out APIs
+   - Use "data" field for response object
+   - Use "message" for success/error messages
+   - Use "success" boolean flag
+
+10. Error Handling:
+    - 400: Validation errors
+    - 401: Authentication required
+    - 404: Location not found (for PUT/DELETE)
+    - 500: Server errors
+
+NOTE: Check-in और Check-out APIs जैसा ही structure follow करना है। Same authentication method use करना है।
+

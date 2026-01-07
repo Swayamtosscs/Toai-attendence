@@ -1,0 +1,38 @@
+# Production Release APK - Build Commands
+
+## Quick Build (Uses Debug Keystore)
+flutter clean
+flutter build apk --release
+
+Output: build/app/outputs/flutter-apk/app-release.apk
+
+## Build with Custom Keystore
+
+1. Create keystore:
+cd android
+keytool -genkey -v -keystore release-keystore.jks -keyalg RSA -keysize 2048 -validity 10000 -alias release-key
+
+2. Create android/key.properties:
+storePassword=YOUR_PASSWORD
+keyPassword=YOUR_PASSWORD
+keyAlias=release-key
+storeFile=release-keystore.jks
+
+3. Build:
+flutter clean
+flutter build apk --release
+
+## Split APKs (Smaller Size)
+flutter build apk --release --split-per-abi
+
+## App Bundle (Play Store)
+flutter build appbundle --release
+
+## Verify APK
+Install on device and test:
+- Permissions work
+- Foreground service runs
+- Location tracking works
+- Check-in/checkout works
+- Timers work correctly
+

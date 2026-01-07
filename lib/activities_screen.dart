@@ -1,22 +1,17 @@
 import 'package:flutter/material.dart';
-import 'profile_screen.dart';
+import 'leave_request_screen.dart';
+import 'leave_list_screen.dart';
+import 'chat_screen.dart';
 
 // Activities Screen
 class ActivitiesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF121212),
+      backgroundColor: Colors.white,
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF282828),
-              Color(0xFF121212),
-            ],
-          ),
+        decoration: const BoxDecoration(
+          color: Colors.white, // Pure white - no gradient
         ),
         child: SafeArea(
           child: Column(
@@ -32,18 +27,18 @@ class ActivitiesScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Colors.black87,
                       ),
                     ),
                     Container(
                       width: 50,
                       height: 50,
                       decoration: BoxDecoration(
-                        color: Color(0xFF3f3f3f),
+                        color: Colors.grey[100],
                         shape: BoxShape.circle,
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black54,
+                            color: Colors.grey.withOpacity(0.2),
                             blurRadius: 10,
                             spreadRadius: 2,
                           ),
@@ -58,7 +53,7 @@ class ActivitiesScreen extends StatelessWidget {
                         },
                         icon: Icon(
                           Icons.person,
-                          color: Colors.white,
+                          color: Colors.black87,
                           size: 25,
                         ),
                       ),
@@ -72,7 +67,7 @@ class ActivitiesScreen extends StatelessWidget {
                 child: Container(
                   margin: EdgeInsets.only(top: 20),
                   decoration: BoxDecoration(
-                    color: Color(0xFF121212),
+                    color: Colors.white,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
                       topRight: Radius.circular(30),
@@ -88,12 +83,12 @@ class ActivitiesScreen extends StatelessWidget {
                           height: 180,
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
-                              colors: [Color(0xFF575757), Color(0xFF3f3f3f)],
+                              colors: [Colors.blue, Colors.blueAccent],
                             ),
                             borderRadius: BorderRadius.circular(20),
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black54,
+                                color: Colors.grey.withOpacity(0.2),
                                 blurRadius: 10,
                                 spreadRadius: 2,
                               ),
@@ -108,7 +103,7 @@ class ActivitiesScreen extends StatelessWidget {
                                 Text(
                                   'Company Updates',
                                   style: TextStyle(
-                                    color: Colors.white,
+                                    color: Colors.white, // White text on blue background
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
                                   ),
@@ -116,7 +111,7 @@ class ActivitiesScreen extends StatelessWidget {
                                 Text(
                                   'Stay informed with latest news',
                                   style: TextStyle(
-                                    color: Color(0xFF8b8b8b),
+                                    color: Colors.white70, // Light white text on blue background
                                     fontSize: 14,
                                   ),
                                 ),
@@ -133,7 +128,7 @@ class ActivitiesScreen extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Colors.black87,
                           ),
                         ),
                         SizedBox(height: 15),
@@ -160,6 +155,14 @@ class ActivitiesScreen extends StatelessWidget {
                                 icon: Icons.exit_to_app,
                                 title: 'Apply Leave',
                                 color: Colors.orange[400]!,
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const LeaveRequestScreen(),
+                                    ),
+                                  );
+                                },
                               ),
                             ),
                           ],
@@ -173,7 +176,7 @@ class ActivitiesScreen extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: Colors.white,
+                            color: Colors.black87,
                           ),
                         ),
                         SizedBox(height: 15),
@@ -193,9 +196,17 @@ class ActivitiesScreen extends StatelessWidget {
                             ),
                             _buildActivityCard(
                               icon: Icons.holiday_village,
-                              title: 'Holiday List',
-                              subtitle: 'Upcoming holidays',
+                              title: 'My Leaves',
+                              subtitle: 'View leave requests',
                               color: Colors.purple,
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const LeaveListScreen(),
+                                  ),
+                                );
+                              },
                             ),
                             _buildActivityCard(
                               icon: Icons.upload_file,
@@ -220,6 +231,14 @@ class ActivitiesScreen extends StatelessWidget {
                               title: 'Messages',
                               subtitle: 'Company chat',
                               color: Colors.teal,
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const ChatScreen(),
+                                  ),
+                                );
+                              },
                             ),
                           ],
                         ),
@@ -239,42 +258,47 @@ class ActivitiesScreen extends StatelessWidget {
     required IconData icon,
     required String title,
     required Color color,
+    VoidCallback? onTap,
   }) {
-    return Container(
-      padding: EdgeInsets.all(15),
-      decoration: BoxDecoration(
-        color: Color(0xFF282828),
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black54,
-            blurRadius: 8,
-            spreadRadius: 1,
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          Container(
-            width: 50,
-            height: 50,
-            decoration: BoxDecoration(
-              color: Color(0xFF3f3f3f),
-              shape: BoxShape.circle,
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(15),
+      child: Container(
+        padding: EdgeInsets.all(15),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black54,
+              blurRadius: 8,
+              spreadRadius: 1,
             ),
-            child: Icon(icon, color: color, size: 25),
-          ),
-          SizedBox(height: 10),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: Colors.white,
+          ],
+        ),
+        child: Column(
+          children: [
+            Container(
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                color: Colors.grey[100],
+                shape: BoxShape.circle,
+              ),
+              child: Icon(icon, color: color, size: 25),
             ),
-          ),
-        ],
+            SizedBox(height: 10),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: Colors.black, // Black text on white background
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -284,52 +308,57 @@ class ActivitiesScreen extends StatelessWidget {
     required String title,
     required String subtitle,
     required Color color,
+    VoidCallback? onTap,
   }) {
-    return Container(
-      padding: EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: Color(0xFF282828),
-        borderRadius: BorderRadius.circular(15),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black54,
-            blurRadius: 8,
-            spreadRadius: 1,
-          ),
-        ],
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            width: 50,
-            height: 50,
-            decoration: BoxDecoration(
-              color: Color(0xFF3f3f3f),
-              shape: BoxShape.circle,
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(15),
+      child: Container(
+        padding: EdgeInsets.all(20),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black54,
+              blurRadius: 8,
+              spreadRadius: 1,
             ),
-            child: Icon(icon, color: color, size: 25),
-          ),
-          SizedBox(height: 15),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
+          ],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                color: Colors.grey[100],
+                shape: BoxShape.circle,
+              ),
+              child: Icon(icon, color: color, size: 25),
             ),
-          ),
-          SizedBox(height: 5),
-          Text(
-            subtitle,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 12,
-              color: Color(0xFF8b8b8b),
+            SizedBox(height: 15),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+                color: Colors.black, // Black text on white background
+              ),
             ),
-          ),
-        ],
+            SizedBox(height: 5),
+            Text(
+              subtitle,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 12,
+                color: Colors.grey[700],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -340,17 +369,10 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF121212),
+      backgroundColor: Colors.white,
       body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Color(0xFF282828),
-              Color(0xFF121212),
-            ],
-          ),
+        decoration: const BoxDecoration(
+          color: Colors.white, // Pure white - no gradient
         ),
         child: SafeArea(
           child: Column(
@@ -362,20 +384,20 @@ class ProfileScreen extends StatelessWidget {
                   children: [
                     IconButton(
                       onPressed: () => Navigator.pop(context),
-                      icon: Icon(Icons.arrow_back, color: Colors.white),
+                      icon: Icon(Icons.arrow_back, color: Colors.black87),
                     ),
                     Text(
                       'Profile',
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-                        color: Colors.white,
+                        color: Colors.black87,
                       ),
                     ),
                     Spacer(),
                     IconButton(
                       onPressed: () {},
-                      icon: Icon(Icons.edit, color: Colors.white),
+                      icon: Icon(Icons.edit, color: Colors.black87),
                     ),
                   ],
                 ),
@@ -386,7 +408,7 @@ class ProfileScreen extends StatelessWidget {
                 child: Container(
                   margin: EdgeInsets.only(top: 20),
                   decoration: BoxDecoration(
-                    color: Color(0xFF121212),
+                    color: Colors.white,
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(30),
                       topRight: Radius.circular(30),
@@ -400,11 +422,12 @@ class ProfileScreen extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.all(25),
                           decoration: BoxDecoration(
-                            color: Color(0xFF282828),
+                            color: Colors.white, // White background
                             borderRadius: BorderRadius.circular(20),
+                            border: Border.all(color: const Color(0xFFE5E7EB)), // Light gray border
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black54,
+                                color: Colors.black.withOpacity(0.05), // Subtle shadow
                                 blurRadius: 10,
                                 spreadRadius: 2,
                               ),
@@ -419,12 +442,12 @@ class ProfileScreen extends StatelessWidget {
                                     height: 100,
                                     decoration: BoxDecoration(
                                       gradient: LinearGradient(
-                                        colors: [Color(0xFF575757), Color(0xFF3f3f3f)],
+                                        colors: [Colors.blue, Colors.blueAccent],
                                       ),
                                       shape: BoxShape.circle,
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.black54,
+                                          color: Colors.grey.withOpacity(0.2),
                                           blurRadius: 15,
                                           spreadRadius: 3,
                                         ),
@@ -433,7 +456,7 @@ class ProfileScreen extends StatelessWidget {
                                     child: Icon(
                                       Icons.person,
                                       size: 50,
-                                      color: Colors.white,
+                                      color: Colors.white, // White icon on blue gradient
                                     ),
                                   ),
                                   Positioned(
@@ -443,14 +466,14 @@ class ProfileScreen extends StatelessWidget {
                                       width: 30,
                                       height: 30,
                                       decoration: BoxDecoration(
-                                        color: Color(0xFF3f3f3f),
+                                        color: Colors.grey[100],
                                         shape: BoxShape.circle,
-                                        border: Border.all(color: Color(0xFF575757)),
+                                        border: Border.all(color: Colors.blue),
                                       ),
                                       child: Icon(
                                         Icons.camera_alt,
                                         size: 16,
-                                        color: Colors.white,
+                                        color: Colors.black87,
                                       ),
                                     ),
                                   ),
@@ -462,7 +485,7 @@ class ProfileScreen extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 24,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white,
+                                  color: Colors.black, // Black text on white background
                                 ),
                               ),
                               SizedBox(height: 5),
@@ -470,14 +493,14 @@ class ProfileScreen extends StatelessWidget {
                                 'Senior Software Developer',
                                 style: TextStyle(
                                   fontSize: 16,
-                                  color: Color(0xFF8b8b8b),
+                                  color: Colors.black87, // Dark gray text
                                 ),
                               ),
                               SizedBox(height: 15),
                               Container(
                                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 8),
                                 decoration: BoxDecoration(
-                                  color: Color(0xFF3f3f3f),
+                                  color: Colors.grey[100],
                                   borderRadius: BorderRadius.circular(20),
                                   border: Border.all(color: Colors.green),
                                 ),
@@ -529,11 +552,12 @@ class ProfileScreen extends StatelessWidget {
                         Container(
                           padding: EdgeInsets.all(20),
                           decoration: BoxDecoration(
-                            color: Color(0xFF282828),
+                            color: Colors.white, // White background
                             borderRadius: BorderRadius.circular(15),
+                            border: Border.all(color: const Color(0xFFE5E7EB)), // Light gray border
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black54,
+                                color: Colors.black.withOpacity(0.05), // Subtle shadow
                                 blurRadius: 8,
                                 spreadRadius: 1,
                               ),
@@ -547,7 +571,7 @@ class ProfileScreen extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white,
+                                  color: Colors.black, // Black text on white background
                                 ),
                               ),
                               SizedBox(height: 20),
@@ -603,11 +627,12 @@ class ProfileScreen extends StatelessWidget {
                         // Settings Options
                         Container(
                           decoration: BoxDecoration(
-                            color: Color(0xFF282828),
+                            color: Colors.white, // White background
                             borderRadius: BorderRadius.circular(15),
+                            border: Border.all(color: const Color(0xFFE5E7EB)), // Light gray border
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black54,
+                                color: Colors.black.withOpacity(0.05), // Subtle shadow
                                 blurRadius: 8,
                                 spreadRadius: 1,
                               ),
@@ -665,11 +690,12 @@ class ProfileScreen extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Color(0xFF282828),
+        color: Colors.white, // White background
         borderRadius: BorderRadius.circular(15),
+        border: Border.all(color: const Color(0xFFE5E7EB)), // Light gray border
         boxShadow: [
           BoxShadow(
-            color: Colors.black54,
+            color: Colors.black.withOpacity(0.05), // Subtle shadow
             blurRadius: 8,
             spreadRadius: 1,
           ),
@@ -683,7 +709,7 @@ class ProfileScreen extends StatelessWidget {
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: Colors.black, // Black text on white background
             ),
           ),
           SizedBox(height: 15),
@@ -705,7 +731,7 @@ class ProfileScreen extends StatelessWidget {
               label,
               style: TextStyle(
                 fontSize: 14,
-                color: Color(0xFF8b8b8b),
+                color: Colors.grey[700],
                 fontWeight: FontWeight.w500,
               ),
             ),
@@ -716,7 +742,7 @@ class ProfileScreen extends StatelessWidget {
               value,
               style: TextStyle(
                 fontSize: 14,
-                color: Colors.white,
+                color: Colors.black, // Black text on white background
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -735,7 +761,7 @@ class ProfileScreen extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(15),
       decoration: BoxDecoration(
-        color: Color(0xFF3f3f3f),
+        color: Colors.grey[100],
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -747,7 +773,7 @@ class ProfileScreen extends StatelessWidget {
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: Colors.black, // Black text on white background
             ),
           ),
           Text(
@@ -755,7 +781,7 @@ class ProfileScreen extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 12,
-              color: Color(0xFF8b8b8b),
+              color: Colors.black87, // Dark gray text
             ),
           ),
         ],
@@ -777,7 +803,7 @@ class ProfileScreen extends StatelessWidget {
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
           border: isLast ? null : Border(
-            bottom: BorderSide(color: Color(0xFF3f3f3f), width: 1),
+            bottom: BorderSide(color: Colors.grey[300]!, width: 1),
           ),
         ),
         child: Row(
@@ -786,12 +812,12 @@ class ProfileScreen extends StatelessWidget {
               width: 45,
               height: 45,
               decoration: BoxDecoration(
-                color: Color(0xFF3f3f3f),
+                color: Colors.grey[100],
                 shape: BoxShape.circle,
               ),
               child: Icon(
                 icon,
-                color: textColor ?? Colors.white,
+                color: textColor ?? Colors.black87,
                 size: 22,
               ),
             ),
@@ -805,7 +831,7 @@ class ProfileScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
-                      color: textColor ?? Colors.white,
+                      color: textColor ?? Colors.black87,
                     ),
                   ),
                   SizedBox(height: 2),
@@ -813,7 +839,7 @@ class ProfileScreen extends StatelessWidget {
                     subtitle,
                     style: TextStyle(
                       fontSize: 13,
-                      color: Color(0xFF8b8b8b),
+                      color: Colors.grey[700],
                     ),
                   ),
                 ],
