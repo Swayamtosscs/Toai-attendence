@@ -1545,6 +1545,33 @@ p {
     box-shadow: var(--shadow-sm);
 }
 
+.github-link a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: var(--font-sm);
+    transition: all 0.25s ease;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+}
+
+.github-link a:hover {
+    color: var(--primary);
+    background: var(--bg-tertiary);
+    transform: translateX(4px);
+}
+
+.github-link svg {
+    transition: transform 0.25s ease;
+}
+
+.github-link:hover svg {
+    transform: scale(1.1);
+}
+
 .download-feature-item svg {
     color: var(--success);
     flex-shrink: 0;
