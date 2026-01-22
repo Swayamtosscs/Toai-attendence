@@ -367,68 +367,12 @@ const optimizedScroll = () => {
 window.addEventListener('scroll', optimizedScroll, { passive: true });
 
 // ============================================
-// DARK MODE TOGGLE
+// DARK MODE - ALWAYS ENABLED
 // ============================================
 
-const themeToggle = document.getElementById('themeToggle');
+// Set dark mode as default and always enabled
 const html = document.documentElement;
-const sunIcon = themeToggle?.querySelector('.sun-icon');
-const moonIcon = themeToggle?.querySelector('.moon-icon');
-
-// Get saved theme or default to light
-const getTheme = () => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        return savedTheme;
-    }
-    // Check system preference
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        return 'dark';
-    }
-    return 'light';
-};
-
-// Apply theme
-const applyTheme = (theme) => {
-    if (theme === 'dark') {
-        html.setAttribute('data-theme', 'dark');
-        if (sunIcon) sunIcon.style.display = 'block';
-        if (moonIcon) moonIcon.style.display = 'none';
-    } else {
-        html.removeAttribute('data-theme');
-        if (sunIcon) sunIcon.style.display = 'none';
-        if (moonIcon) moonIcon.style.display = 'block';
-    }
-    localStorage.setItem('theme', theme);
-};
-
-// Initialize theme on page load
-const currentTheme = getTheme();
-applyTheme(currentTheme);
-
-// Toggle theme on button click
-themeToggle?.addEventListener('click', () => {
-    const currentTheme = html.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    applyTheme(newTheme);
-    
-    // Add animation effect
-    themeToggle.style.transform = 'scale(0.9)';
-    setTimeout(() => {
-        themeToggle.style.transform = 'scale(1)';
-    }, 150);
-});
-
-// Listen for system theme changes
-if (window.matchMedia) {
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    mediaQuery.addEventListener('change', (e) => {
-        // Only auto-switch if user hasn't manually set a preference
-        if (!localStorage.getItem('theme')) {
-            applyTheme(e.matches ? 'dark' : 'light');
-        }
-    });
-}
+html.setAttribute('data-theme', 'dark');
 
 // ============================================
 // CONSOLE MESSAGE
