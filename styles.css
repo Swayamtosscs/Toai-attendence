@@ -686,10 +686,9 @@ p {
     border: 1px solid var(--border-color);
     border-radius: var(--radius-3xl);
     padding: var(--space-12) var(--space-16);
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: var(--space-16);
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-12);
     box-shadow: 
         var(--shadow-2xl),
         0 0 0 1px rgba(99, 102, 241, 0.08),
@@ -966,74 +965,81 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.phone-mockup {
-    position: relative;
-    max-width: 300px;
     width: 100%;
-    aspect-ratio: 9/19;
-    filter: drop-shadow(0 25px 50px rgba(99, 102, 241, 0.25)) drop-shadow(0 10px 20px rgba(0, 0, 0, 0.12));
-    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
-    animation: phoneFloat 6s ease-in-out infinite;
+    overflow: hidden;
 }
 
-@keyframes phoneFloat {
-    0%, 100% {
-        transform: translateY(0) rotateY(0deg);
-    }
-    50% {
-        transform: translateY(-10px) rotateY(2deg);
-    }
-}
-
-.hero-card:hover .phone-mockup {
-    transform: translateY(-12px) scale(1.05) rotateY(3deg);
-    filter: drop-shadow(0 30px 60px rgba(99, 102, 241, 0.3)) drop-shadow(0 12px 24px rgba(0, 0, 0, 0.15));
-    animation: none;
-}
-
-.phone-screen {
-    position: relative;
+.hero-images-line {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
     width: 100%;
-    height: 100%;
-    border-radius: var(--radius-3xl);
+    overflow-x: auto;
+    padding: var(--space-4) var(--space-2);
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) transparent;
+    -ms-overflow-style: none;
+}
+
+.hero-images-line::-webkit-scrollbar {
+    height: 6px;
+}
+
+.hero-images-line::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+    border-radius: var(--radius-full);
+}
+
+.hero-images-line::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: var(--radius-full);
+}
+
+.hero-image-item {
+    flex-shrink: 0;
+    width: 180px;
+    height: 360px;
+    border-radius: var(--radius-2xl);
     overflow: hidden;
     box-shadow: 
+        var(--shadow-lg),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+    border: 2px solid var(--border-color);
+    background: var(--bg-secondary);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.hero-image-item:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 
         var(--shadow-2xl),
-        inset 0 2px 4px rgba(255, 255, 255, 0.3),
-        0 0 0 2px rgba(99, 102, 241, 0.12);
-    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-    padding: var(--space-2);
-    border: 2px solid rgba(99, 102, 241, 0.15);
-}
-
-.phone-screen::before {
-    content: '';
-    position: absolute;
-    top: 0.375rem;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 18px;
-    background: #1a1a1a;
-    border-radius: 0 0 12px 12px;
+        var(--shadow-glow),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.9);
+    border-color: var(--border-primary);
     z-index: 10;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.screen-img {
+.hero-image-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 20px;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     display: block;
+    transition: transform 0.4s ease;
 }
 
-.hero-card:hover .screen-img {
-    transform: scale(1.03);
+.hero-image-item:hover img {
+    transform: scale(1.05);
+}
+
+/* Smooth horizontal scroll on hover */
+.hero-images-line {
+    cursor: grab;
+}
+
+.hero-images-line:active {
+    cursor: grabbing;
 }
 
 /* ============================================
@@ -1901,19 +1907,22 @@ p {
 
 @media (max-width: 1024px) {
     .hero-card {
-        grid-template-columns: 1fr;
         padding: var(--space-8) var(--space-10);
-        gap: var(--space-10);
+        gap: var(--space-8);
     }
     
     .hero-image {
-        order: -1;
-        max-width: 240px;
-        margin: 0 auto;
+        width: 100%;
     }
     
-    .phone-mockup {
-        max-width: 240px;
+    .hero-images-line {
+        gap: var(--space-3);
+        padding: var(--space-3) var(--space-2);
+    }
+    
+    .hero-image-item {
+        width: 150px;
+        height: 300px;
     }
     
     .hero-title {
@@ -2047,11 +2056,17 @@ p {
     }
     
     .hero-image {
-        max-width: 200px;
+        width: 100%;
     }
     
-    .phone-mockup {
-        max-width: 200px;
+    .hero-image-item {
+        width: 120px;
+        height: 240px;
+    }
+    
+    .hero-images-line {
+        gap: var(--space-2);
+        padding: var(--space-2);
     }
     
     .hero-title {
