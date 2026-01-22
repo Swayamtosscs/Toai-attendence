@@ -1,5 +1,0 @@
-storePassword=YOUR_KEYSTORE_PASSWORD
-keyPassword=YOUR_KEY_PASSWORD
-keyAlias=YOUR_KEY_ALIAS
-storeFile=YOUR_KEYSTORE_PATH
-

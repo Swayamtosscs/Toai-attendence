@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToAI Attendance - Smart Attendance Solution</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Dashboard Sidebar -->
+    <aside class="dashboard-sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <img src="public/App logo.png" alt="ToAI Attendance Logo" class="logo-img">
+                <div class="logo-text-group">
+                    <span class="logo-text">ToAI</span>
+                    <span class="logo-subtext">Attendance</span>
+                </div>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item active">
+                    <a href="#dashboard" class="nav-link">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M3 3H9V9H3V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M11 3H17V9H11V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3 11H9V17H3V11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M11 11H17V17H11V11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#features" class="nav-link">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 2L12.09 7.26L17 8.27L13 12.14L13.82 17.02L10 14.77L6.18 17.02L7 12.14L3 8.27L7.91 7.26L10 2Z" fill="currentColor"/>
+                        </svg>
+                        <span>Features</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#screenshots" class="nav-link">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M2 4C2 2.89543 2.89543 2 4 2H16C17.1046 2 18 2.89543 18 4V16C18 17.1046 17.1046 18 16 18H4C2.89543 18 2 17.1046 2 16V4Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M7 7L13 13M13 7L7 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <span>Screenshots</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#analytics" class="nav-link">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M3 15L8 10L12 14L17 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M17 9H13V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#settings" class="nav-link">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 12C11.1046 12 12 11.1046 12 10C12 8.89543 11.1046 8 10 8C8.89543 8 8 8.89543 8 10C8 11.1046 8.89543 12 10 12Z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M15.657 12.343C15.844 12.53 15.844 12.844 15.657 13.031L14.243 14.445C14.056 14.632 13.742 14.632 13.555 14.445C13.368 14.258 13.368 13.944 13.555 13.757L14.969 12.343C15.156 12.156 15.47 12.156 15.657 12.343Z" fill="currentColor"/>
+                            <path d="M4.343 7.657C4.156 7.47 4.156 7.156 4.343 6.969L5.757 5.555C5.944 5.368 6.258 5.368 6.445 5.555C6.632 5.742 6.632 6.056 6.445 6.243L5.031 7.657C4.844 7.844 4.53 7.844 4.343 7.657Z" fill="currentColor"/>
+                            <path d="M12.343 4.343C12.53 4.156 12.844 4.156 13.031 4.343L14.445 5.757C14.632 5.944 14.632 6.258 14.445 6.445C14.258 6.632 13.944 6.632 13.757 6.445L12.343 5.031C12.156 4.844 12.156 4.53 12.343 4.343Z" fill="currentColor"/>
+                            <path d="M7.657 15.657C7.47 15.844 7.156 15.844 6.969 15.657L5.555 14.243C5.368 14.056 5.368 13.742 5.555 13.555C5.742 13.368 6.056 13.368 6.243 13.555L7.657 14.969C7.844 15.156 8.156 15.156 7.657 15.657Z" fill="currentColor"/>
+                            <path d="M10 3V5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M10 15V17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M17 10H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M5 10H3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                        <span>Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="btn-upgrade">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M10 2L12.09 7.26L17 8.27L13 12.14L13.82 17.02L10 14.77L6.18 17.02L7 12.14L3 8.27L7.91 7.26L10 2Z" fill="currentColor"/>
+                </svg>
+                <span>Upgrade to Pro</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Dashboard Content -->
+    <main class="dashboard-main">
+        <!-- Top Header Bar -->
+        <header class="dashboard-header">
+            <div class="header-left">
+                <button class="menu-btn" id="menuBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </button>
+                <div class="header-search">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z" stroke="currentColor" stroke-width="2"/>
+                        <path d="M19 19L14.65 14.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <input type="text" placeholder="Search..." class="search-input">
+                </div>
+            </div>
+            <div class="header-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <svg class="sun-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" style="display: none;">
+                        <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" fill="currentColor"/>
+                        <path d="M12 2V4M12 20V22M4 12H2M22 12H20M19.07 4.93L17.66 6.34M6.34 17.66L4.93 19.07M19.07 19.07L17.66 17.66M6.34 6.34L4.93 4.93" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <svg class="moon-icon" width="22" height="22" viewBox="0 0 24 24" fill="none">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="currentColor"/>
+                    </svg>
+                </button>
+                <div class="user-profile">
+                    <img src="public/App logo.png" alt="User" class="profile-img">
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Content Area -->
+        <div class="dashboard-content" id="dashboard">
+            <!-- Hero Banner -->
+            <section class="hero-banner">
+                <div class="hero-card">
+                    <div class="hero-content">
+                        <div class="hero-badge">
+                            <span class="badge-icon">✨</span>
+                            <span>Smart Attendance Solution</span>
+                        </div>
+                        <h1 class="hero-title">
+                            <span class="gradient-text">Revolutionize</span> Your Attendance Management
+                        </h1>
+                        <p class="hero-description">
+                            AI-powered automation for seamless check-ins and real-time monitoring
+                        </p>
+                        <div class="hero-buttons">
+                            <button class="btn btn-primary">
+                                <span>Get Started</span>
+                                <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                                    <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button class="btn btn-secondary">
+                                <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                                    <path d="M10 18.3333C14.6024 18.3333 18.3333 14.6024 18.3333 10C18.3333 5.39763 14.6024 1.66667 10 1.66667C5.39763 1.66667 1.66667 5.39763 1.66667 10C1.66667 14.6024 5.39763 18.3333 10 18.3333Z" stroke="currentColor" stroke-width="1.5"/>
+                                    <path d="M8.33333 6.66667L12.5 10L8.33333 13.3333" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Watch Demo</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="phone-mockup">
+                            <div class="phone-screen">
+                                <img src="public/Splash screen .png" alt="Splash Screen" class="screen-img">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- APK Download Section -->
+            <section class="download-section">
+                <div class="download-card">
+                    <div class="download-content">
+                        <div class="download-icon">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+                                <path d="M24 4L30.09 12.26L39 13.27L32.5 19.14L34.18 28.02L24 23.77L13.82 28.02L15.5 19.14L9 13.27L17.91 12.26L24 4Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h2 class="download-title">Download ToAI Attendance App</h2>
+                        <p class="download-description">
+                            Get the app now and experience seamless auto check-in and check-out. 
+                            Works in background with location-based attendance tracking.
+                        </p>
+                        <a href="assest/app-release.apk" download="ToAI-Attendance.apk" class="btn btn-download">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M10 2V12M10 12L7 9M10 12L13 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M3 15V16C3 17.6569 4.34315 19 6 19H14C15.6569 19 17 17.6569 17 16V15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            <span>Download APK (30 MB)</span>
+                        </a>
+                        <div class="download-features">
+                            <div class="download-feature-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M13.3333 4L6 11.3333L2.66667 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Auto Check-in/Check-out</span>
+                            </div>
+                            <div class="download-feature-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M13.3333 4L6 11.3333L2.66667 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Location-Based Tracking</span>
+                            </div>
+                            <div class="download-feature-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M13.3333 4L6 11.3333L2.66667 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Background Operation</span>
+                            </div>
+                            <div class="download-feature-item">
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                    <path d="M13.3333 4L6 11.3333L2.66667 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                <span>Multiple Check-ins/Outs</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="download-image">
+                        <div class="phone-preview">
+                            <img src="public/Home.png" alt="App Preview">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Grid -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" fill="white"/>
+                            <path d="M12 6V12L16 14" stroke="#667eea" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value">10K+</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                    <div class="stat-trend">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M4 12L12 4M12 4H8M12 4V8" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>+12%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="white"/>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value">99.9%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                    <div class="stat-trend">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M4 12L12 4M12 4H8M12 4V8" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>+0.2%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2Z" fill="white"/>
+                            <path d="M12 6V12L16 14" stroke="#4facfe" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value">24/7</div>
+                        <div class="stat-label">Support</div>
+                    </div>
+                    <div class="stat-trend">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M4 12L12 4M12 4H8M12 4V8" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>100%</span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M16 21V19C16 17.9391 15.5786 16.9217 14.8284 16.1716C14.0783 15.4214 13.0609 15 12 15H5C3.93913 15 2.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M8.5 11C10.7091 11 12.5 9.20914 12.5 7C12.5 4.79086 10.7091 3 8.5 3C6.29086 3 4.5 4.79086 4.5 7C4.5 9.20914 6.29086 11 8.5 11Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M23 21V19C22.9993 18.1137 22.7044 17.2528 22.1614 16.5523C21.6184 15.8519 20.8581 15.3516 20 15.13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M16 3.13C16.8604 3.35031 17.623 3.85071 18.1676 4.55232C18.7122 5.25392 19.0078 6.11683 19.0078 7.005C19.0078 7.89318 18.7122 8.75608 18.1676 9.45769C17.623 10.1593 16.8604 10.6597 16 10.88" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <div class="stat-value">500+</div>
+                        <div class="stat-label">Companies</div>
+                    </div>
+                    <div class="stat-trend">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M4 12L12 4M12 4H8M12 4V8" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>+25%</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Section -->
+            <section id="features" class="features-section">
+                <div class="section-header">
+                    <h2 class="section-title">Powerful Features</h2>
+                    <p class="section-description">Everything you need to manage attendance efficiently</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M16 2L20.09 10.26L29 11.27L22.5 17.14L24.18 26.02L16 21.77L7.82 26.02L9.5 17.14L3 11.27L11.91 10.26L16 2Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Auto Check-in & Check-out</h3>
+                        <p class="feature-description">Automatically tracks your attendance when you enter or leave the office location. Works in background - no manual intervention needed. Multiple check-ins and check-outs supported throughout the day.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M16 2C8.27 2 2 8.27 2 16C2 23.73 8.27 30 16 30C23.73 30 30 23.73 30 16C30 8.27 23.73 2 16 2ZM16 28C9.37 28 4 22.63 4 16C4 9.37 9.37 4 16 4C22.63 4 28 9.37 28 16C28 22.63 22.63 28 16 28Z" fill="currentColor"/>
+                                <path d="M16 8V16L22 20" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Location-Based Tracking</h3>
+                        <p class="feature-description">Auto check-in only works when you're within the designated office location radius. Add multiple office locations with precise GPS coordinates. Check-in/out happens automatically when you enter or exit the location.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M16 16C18.7614 16 21 13.7614 21 11C21 8.23858 18.7614 6 16 6C13.2386 6 11 8.23858 11 11C11 13.7614 13.2386 16 16 16Z" fill="currentColor"/>
+                                <path d="M8 26C8 21.5817 11.5817 18 16 18C20.4183 18 24 21.5817 24 26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Admin Dashboard</h3>
+                        <p class="feature-description">View all present employees in real-time with detailed attendance reports and analytics.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M26 4H6C4.89543 4 4 4.89543 4 6V26C4 27.1046 4.89543 28 6 28H26C27.1046 28 28 27.1046 28 26V6C28 4.89543 27.1046 4 26 4Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M22 12L14 20L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Background Auto Attendance</h3>
+                        <p class="feature-description">The app works seamlessly in the background. Even when the app is closed, it automatically detects your location and performs check-in/check-out. No need to keep the app open all day.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M16 2L20.09 10.26L29 11.27L22.5 17.14L24.18 26.02L16 21.77L7.82 26.02L9.5 17.14L3 11.27L11.91 10.26L16 2Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Smart Reports & Analytics</h3>
+                        <p class="feature-description">View detailed attendance reports with all check-in and check-out times. Track your daily, weekly, and monthly attendance. See work duration, multiple check-in/out records, and comprehensive analytics.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M16 2C8.27 2 2 8.27 2 16C2 23.73 8.27 30 16 30C23.73 30 30 23.73 30 16C30 8.27 23.73 2 16 2Z" fill="currentColor"/>
+                                <path d="M16 8V16L22 20" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="feature-title">Secure & Reliable</h3>
+                        <p class="feature-description">Enterprise-grade security with encrypted data transmission and secure authentication.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Screenshots Section -->
+            <section id="screenshots" class="screenshots-section">
+                <div class="section-header">
+                    <h2 class="section-title">App Screenshots</h2>
+                    <p class="section-description">Beautiful interface, intuitive design</p>
+                </div>
+                <div class="screenshots-grid">
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="screenshot-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="screenshot-title">Splash Screen</div>
+                        </div>
+                        <div class="screenshot-image">
+                            <img src="public/Splash screen .png" alt="Splash Screen">
+                        </div>
+                    </div>
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="screenshot-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="screenshot-title">Home Dashboard</div>
+                        </div>
+                        <div class="screenshot-image">
+                            <img src="public/Home.png" alt="Home Screen">
+                        </div>
+                    </div>
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="screenshot-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="screenshot-title">Add Location</div>
+                        </div>
+                        <div class="screenshot-image">
+                            <img src="public/Add location.png" alt="Add Location Screen">
+                        </div>
+                    </div>
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="screenshot-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="screenshot-title">Present Employees</div>
+                        </div>
+                        <div class="screenshot-image">
+                            <img src="public/Employees.png" alt="Employees Screen">
+                        </div>
+                    </div>
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="screenshot-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="screenshot-title">Leave Request</div>
+                        </div>
+                        <div class="screenshot-image">
+                            <img src="public/Leave Request.png" alt="Leave Request Screen">
+                        </div>
+                    </div>
+                    <div class="screenshot-card">
+                        <div class="screenshot-header">
+                            <div class="screenshot-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="screenshot-title">Location Management</div>
+                        </div>
+                        <div class="screenshot-image">
+                            <img src="public/Location Management .png" alt="Location Management Screen">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works Section -->
+            <section class="how-it-works-section">
+                <div class="section-header">
+                    <h2 class="section-title">How It Works</h2>
+                    <p class="section-description">Simple, automated, and efficient attendance tracking</p>
+                </div>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">01</div>
+                        <div class="step-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M16 2C8.27 2 2 8.27 2 16C2 23.73 8.27 30 16 30C23.73 30 30 23.73 30 16C30 8.27 23.73 2 16 2Z" fill="currentColor"/>
+                                <path d="M16 8V16L22 20" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="step-title">Set Your Location</h3>
+                        <p class="step-description">Add your office location with GPS coordinates and set the radius. The app will only auto check-in when you're within this location.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">02</div>
+                        <div class="step-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M16 2L20.09 10.26L29 11.27L22.5 17.14L24.18 26.02L16 21.77L7.82 26.02L9.5 17.14L3 11.27L11.91 10.26L16 2Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3 class="step-title">Enable Auto Attendance</h3>
+                        <p class="step-description">Turn on auto attendance in the app settings. The app will work in the background and automatically track your attendance.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">03</div>
+                        <div class="step-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M26 4H6C4.89543 4 4 4.89543 4 6V26C4 27.1046 4.89543 28 6 28H26C27.1046 28 28 27.1046 28 26V6C28 4.89543 27.1046 4 26 4Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M22 12L14 20L10 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="step-title">Automatic Check-in</h3>
+                        <p class="step-description">When you enter the office location, the app automatically checks you in. You can have multiple check-ins throughout the day.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">04</div>
+                        <div class="step-icon">
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                                <path d="M16 16C18.7614 16 21 13.7614 21 11C21 8.23858 18.7614 6 16 6C13.2386 6 11 8.23858 11 11C11 13.7614 13.2386 16 16 16Z" fill="currentColor"/>
+                                <path d="M8 26C8 21.5817 11.5817 18 16 18C20.4183 18 24 21.5817 24 26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="step-title">View Reports</h3>
+                        <p class="step-description">Check your attendance reports anytime. See all check-in/check-out times, work duration, and comprehensive analytics.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Benefits Section -->
+            <section class="benefits-section">
+                <div class="section-header">
+                    <h2 class="section-title">Why Employees Love It</h2>
+                    <p class="section-description">Designed for employees, built for convenience</p>
+                </div>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <path d="M20 4L24.18 15.32L36 17.84L27 26.18L28.36 38L20 32.84L11.64 38L13 26.18L4 17.84L15.82 15.32L20 4Z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">Zero Manual Work</h3>
+                        <p class="benefit-description">No need to remember to check-in or check-out. The app does everything automatically when you're at the office location.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <path d="M20 4C10.06 4 2 12.06 2 22C2 31.94 10.06 40 20 40C29.94 40 38 31.94 38 22C38 12.06 29.94 4 20 4Z" fill="currentColor"/>
+                                <path d="M20 10V22L28 28" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">Works in Background</h3>
+                        <p class="benefit-description">The app runs in the background even when closed. You don't need to keep it open - it automatically tracks your location and attendance.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <path d="M20 20C24.1421 20 27.5 16.6421 27.5 12.5C27.5 8.35786 24.1421 5 20 5C15.8579 5 12.5 8.35786 12.5 12.5C12.5 16.6421 15.8579 20 20 20Z" fill="currentColor"/>
+                                <path d="M10 32.5C10 26.1487 14.6487 21.5 21 21.5C27.3513 21.5 32 26.1487 32 32.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">Location-Based Only</h3>
+                        <p class="benefit-description">Auto check-in only works when you're actually at the office location. No false check-ins when you're away from the office.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <path d="M32.5 5H7.5C5.01472 5 3 7.01472 3 9.5V30.5C3 32.9853 5.01472 35 7.5 35H32.5C34.9853 35 37 32.9853 37 30.5V9.5C37 7.01472 34.9853 5 32.5 5Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M27.5 15L17.5 25L12.5 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">Multiple Check-ins</h3>
+                        <p class="benefit-description">Support for multiple check-ins and check-outs throughout the day. Perfect for employees who leave and return to the office multiple times.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <path d="M20 4C10.06 4 2 12.06 2 22C2 31.94 10.06 40 20 40C29.94 40 38 31.94 38 22C38 12.06 29.94 4 20 4Z" fill="currentColor"/>
+                                <path d="M20 10V22L28 28" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">Detailed Reports</h3>
+                        <p class="benefit-description">View comprehensive reports with all your check-in/check-out times, work duration, and attendance history. Export reports for your records.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                                <path d="M20 4C10.06 4 2 12.06 2 22C2 31.94 10.06 40 20 40C29.94 40 38 31.94 38 22C38 12.06 29.94 4 20 4Z" fill="currentColor"/>
+                                <path d="M16 20L20 24L28 16" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="benefit-title">100% Accurate</h3>
+                        <p class="benefit-description">GPS-based location tracking ensures accurate attendance records. No manual errors, no forgotten check-ins - everything is automated and precise.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Use Cases Section -->
+            <section class="use-cases-section">
+                <div class="section-header">
+                    <h2 class="section-title">Perfect For</h2>
+                    <p class="section-description">Ideal for employees who want hassle-free attendance tracking</p>
+                </div>
+                <div class="use-cases-grid">
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🏢</div>
+                        <h3 class="use-case-title">Office Workers</h3>
+                        <p class="use-case-description">Perfect for employees working in fixed office locations. Auto check-in when you arrive and check-out when you leave.</p>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-icon">🚗</div>
+                        <h3 class="use-case-title">Field Workers</h3>
+                        <p class="use-case-description">Great for employees who visit office multiple times a day. Each visit is automatically tracked with separate check-ins.</p>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-icon">⏰</div>
+                        <h3 class="use-case-title">Flexible Hours</h3>
+                        <p class="use-case-description">Ideal for flexible work schedules. Track your actual office time automatically, regardless of when you come or go.</p>
+                    </div>
+                    <div class="use-case-card">
+                        <div class="use-case-icon">📊</div>
+                        <h3 class="use-case-title">Report Generation</h3>
+                        <p class="use-case-description">Generate detailed attendance reports for payroll, HR, or personal records. All data is automatically collected and organized.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
