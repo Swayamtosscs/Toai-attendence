@@ -385,7 +385,7 @@ if (downloadApkBtn) {
         
         try {
             // Fetch the APK file as a blob to bypass Vercel rewrite
-            const response = await fetch('assest/Toai_Attendence.apk', {
+            const response = await fetch('assest/app-release.apk', {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/vnd.android.package-archive'
@@ -417,7 +417,7 @@ if (downloadApkBtn) {
         } catch (error) {
             console.error('Download error:', error);
             // Fallback to direct link
-            window.location.href = 'assest/Toai_Attendence.apk';
+            window.location.href = 'assest/app-release.apk';
         }
     });
 }
