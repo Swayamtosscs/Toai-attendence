@@ -375,54 +375,6 @@ const html = document.documentElement;
 html.setAttribute('data-theme', 'dark');
 
 // ============================================
-// FORCE APK DOWNLOAD
-// ============================================
-
-const downloadApkBtn = document.getElementById('downloadApkBtn');
-if (downloadApkBtn) {
-    downloadApkBtn.addEventListener('click', async function(e) {
-        e.preventDefault();
-        
-        try {
-            // Fetch the APK file as a blob to bypass Vercel rewrite
-            const response = await fetch('assest/app-release.apk', {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/vnd.android.package-archive'
-                }
-            });
-            
-            if (!response.ok) {
-                throw new Error('Failed to download APK');
-            }
-            
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
-            
-            // Create a temporary link to trigger download
-            const link = document.createElement('a');
-            link.href = url;
-            link.download = 'Toai-Attendance.apk';
-            link.type = 'application/vnd.android.package-archive';
-            link.style.display = 'none';
-            
-            document.body.appendChild(link);
-            link.click();
-            
-            // Clean up
-            setTimeout(() => {
-                document.body.removeChild(link);
-                window.URL.revokeObjectURL(url);
-            }, 100);
-        } catch (error) {
-            console.error('Download error:', error);
-            // Fallback to direct link
-            window.location.href = 'assest/app-release.apk';
-        }
-    });
-}
-
-// ============================================
 // CONSOLE MESSAGE
 // ============================================
 
